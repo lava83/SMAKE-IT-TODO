@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Todo;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PDOException;
 use Tests\TestCase;
@@ -11,6 +12,12 @@ class TodoTest extends TestCase
 {
 
     use RefreshDatabase;
+
+    public function testTodoHasUser()
+    {
+        $todo = factory(Todo::class)->create();
+        $this->assertInstanceOf(User::class, $todo->user);
+    }
 
     public function testStatusCanOnlyOpenOrClosed()
     {
