@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckedTodoRequest;
 use App\Http\Requests\DestroyTodoRequest;
+use App\Http\Requests\EditTodoRequest;
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
 use App\Models\Todo;
@@ -77,7 +79,7 @@ class TodosController extends Controller
      * @param Todo $todo
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(EditTodoRequest $request, $id)
     {
         return view('todos.edit', ['todo' => $this->repository->find($id)]);
     }
@@ -97,7 +99,7 @@ class TodosController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function checked($id)
+    public function checked(CheckedTodoRequest $request, $id)
     {
         $this->repository->update(['status' => 'closed'], $id);
         return redirect()->route('todos.index');

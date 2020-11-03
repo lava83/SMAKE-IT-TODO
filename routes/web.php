@@ -20,10 +20,12 @@ Route::get('/', function () {
     return redirect(route('todos.index'));
 });
 
+Route::get('home', function () {
+    return redirect(route('todos.index'));
+});
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('todos/filter', 'TodosController@filter')->name('todos.filter');
     Route::post('todos/{todo}/checked', 'TodosController@checked')->name('todos.checked');
     Route::resource('todos', 'TodosController');
 });
-
