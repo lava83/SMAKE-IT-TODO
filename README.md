@@ -1,0 +1,3 @@
+# SMAKE IT TODO
+
+## Installtion
