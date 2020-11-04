@@ -1,6 +1,6 @@
 # SMAKE IT TODO
 
-## Installtion
+## Installation
 
 Composer und PHP wird vorausgesetzt. 
 Das Projekt auschecken:
